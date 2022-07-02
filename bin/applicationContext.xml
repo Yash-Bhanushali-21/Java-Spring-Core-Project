@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    
+     <context:annotation-config/>
+    
+    
+    
+    <!-- loading the properties file for usage. -->
+    <context:property-placeholder location="classpath:sport.properties"/>
+    
+
+    <!-- below bean(s) used for constructor dependency injection -->
+    <bean id = "FortuneService"
+    class = "com.yash.spring.HappyFortuneService">
+    
+    
+    </bean>
+    <bean id = "MovieFinder"
+    class = "com.yash.spring.MovieFinder">
+    <property name = "MovieProvider">
+    <list>
+    <value>movie1</value>
+    <value>movie2</value>
+    </list>
+    </property>
+    </bean>
+    <bean id = "MovieList"
+    class = "com.yash.spring.MovieList">
+    </bean>
+    <bean id = "SleepImp"
+    class = "com.yash.spring.SleepImplementer">
+    </bean>
+    
+    <!-- below bean used for setter method dependency Injection argument -->
+     <bean id = "myPerformanceService"
+    class = "com.yash.spring.GoodPerformanceService">
+    </bean> 
+    
+    <bean id = "baseBallCoach"
+    class = "com.yash.spring.BaseballCoach">    
+    <constructor-arg  ref= "FortuneService" />
+    <constructor-arg  ref= "SleepImp" />
+    
+    <!--  properties for setter dependency injection -->
+    <property name = "record" value = "140" />  <!-- literal setter dependency -->
+    <property name = "performanceService" ref = "myPerformanceService" /> <!-- class setter dependency -->
+   
+    <!-- properties for dynamic values from sport.properties file -->
+    <property name = "emailAddress" value = "${foo.email}" />
+     <property name = "teamName" value = "${foo.team}" />
+    
+     
+    </bean>
+    
+</beans>
+
+
+
+
+
