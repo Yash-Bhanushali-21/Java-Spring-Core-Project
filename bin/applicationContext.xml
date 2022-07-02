@@ -10,41 +10,27 @@
     
      <context:annotation-config/>
     
-    
-    
     <!-- loading the properties file for usage. -->
     <context:property-placeholder location="classpath:sport.properties"/>
     
 
     <!-- below bean(s) used for constructor dependency injection -->
     <bean id = "FortuneService"
-    class = "com.yash.spring.HappyFortuneService">
+    class = "com.coreBeanConfig.spring.HappyFortuneService">
     
     
-    </bean>
-    <bean id = "MovieFinder"
-    class = "com.yash.spring.MovieFinder">
-    <property name = "MovieProvider">
-    <list>
-    <value>movie1</value>
-    <value>movie2</value>
-    </list>
-    </property>
-    </bean>
-    <bean id = "MovieList"
-    class = "com.yash.spring.MovieList">
     </bean>
     <bean id = "SleepImp"
-    class = "com.yash.spring.SleepImplementer">
+    class = "com.coreBeanConfig.spring.SleepImplementer">
     </bean>
     
     <!-- below bean used for setter method dependency Injection argument -->
      <bean id = "myPerformanceService"
-    class = "com.yash.spring.GoodPerformanceService">
+    class = "com.coreBeanConfig.spring.GoodPerformanceService">
     </bean> 
     
     <bean id = "baseBallCoach"
-    class = "com.yash.spring.BaseballCoach">    
+    class = "com.coreBeanConfig.spring.BaseballCoach">    
     <constructor-arg  ref= "FortuneService" />
     <constructor-arg  ref= "SleepImp" />
     
